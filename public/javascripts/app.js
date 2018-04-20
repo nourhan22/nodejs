@@ -3,7 +3,7 @@ $.ajax('/api/student',{
     success:function(data,status){
         var $body=$('body');
         data.forEach(function(student){
-         var $ele='<div>'+studentName+'   '+age+'  '+'</div>';
+         var $ele='<div>'+student.studentName+'   '+student.age+'  '+'</div>';
          $body.append($ele);
         }   
         );
