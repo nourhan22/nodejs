@@ -11,7 +11,8 @@ router.get('/', function(req, res, next) {
   .catch(err=>{next(err);});
 });
 //post the data
-router.post('/', function(req, res, next){
+router.post('/send', function(req, res, next){
+  debugger;
   student.create(req.body, function(err, data){
     res.json(data);
   });

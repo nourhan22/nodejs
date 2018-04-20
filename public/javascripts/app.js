@@ -1,9 +1,10 @@
+//const student=require("./../../models/student");
 $.ajax('/api/student',{
     accepts:'application/json',
-    success:function(data,status){
+    success:function(student,status){
         var $body=$('body');
-        data.forEach(function(student){
-         var $ele='<div>'+student.studentName+'   '+student.age+'  '+'</div>';
+        student.forEach(function(student){
+         var $ele='<div>'+student.name+'   '+student.age+'  '+'</div>';
          $body.append($ele);
         }   
         );
@@ -15,14 +16,20 @@ $('#btn').on('click',function(e){
     var studentName =$('input[name="studentName"]').val();
     var age=$('input[name="age"]').val();
    // debugger;
-    $.ajax('/api',{
+    $.ajax('/api/student/send',{
         method:"POST",
         contentType:'application/json',
         data:JSON.stringify({
             name:studentName,
             age:age
         }),
-        success:function(data,status){
+        success:function(student,status){
+            var $body=$('body');
+           // student.forEach(function(student){
+             var $ele='<div>'+student.name+'   '+student.age+'  '+'</div>';
+             $body.append($ele);
+           // }   
+           // );
 //debugger;
         },
         error:function(ajax,status,err)
